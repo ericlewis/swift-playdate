@@ -126,7 +126,6 @@ TODO
 |🚧|markUpdatedRows|
 |✅|display|
 
-
 ### Sound
 TODO
 
@@ -134,4 +133,46 @@ TODO
 TODO
 
 ### System
-TODO
+|Status|Name|
+|:-:|---|
+|✅|realloc|
+|✅|error|
+|✅|logToConsole|
+|✅|error|
+#### Menu
+|Status|Name|
+|:-:|---|
+|🚧|addMenuItem|
+|🚧|addCheckmarkMenuItem|
+|🚧|addOptionsMenuItem|
+|🚧|removeMenuItem|
+|🚧|removeAllMenuItems|
+|🚧|getMenuItemTitle|
+|🚧|getMenuItemValue|
+|🚧|setMenuItemValue|
+|🚧|getMenuItemUserData|
+|🚧|setMenuItemUserData|
+|🚧|setMenuImage|
+#### Miscellaneous
+|Status|Name|
+|:-:|---|
+|✅|getCurrentTimeMilliseconds|
+|🚧|getSecondsSinceEpoch|
+|🚧|resetElapsedTime|
+|🚧|getElapsedTime|
+|✅|getFlipped|
+|✅|getReduceFlashing|
+|❌|formatString|
+|✅|setUpdateCallback|
+|✅|drawFPS|
+|✅|getBatteryPercentage|
+|✅|getBatteryVoltage|
+|✅|getLanguage|
+|🚧|setPeripheralsEnabled|
+|🚧|getAccelerometer|
+|🚧|getButtonState|
+|🚧|getCrankAngle|
+|🚧|getCrankChange|
+|🚧|getCrankDocked|
+|✅|setAutoLockDisabled|
+|🚧|setCrankSoundDisabled|
