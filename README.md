@@ -38,3 +38,80 @@ func eventCallback(event: SystemEvent) {
   }
 }
 ```
+
+## Supported APIs
+Below is a list of all the C apis & wether or not there is some sort of equivalent in `Playdate`.
+
+### Display
+[x] getWidth
+[x] getHeight
+[x] setRefreshRate
+[x] setInverted
+[x] setScale
+[ ] setMosaic
+[ ] setFlipped
+[ ] setOffset
+
+### File
+TODO
+
+### Graphics
+[x] Clear
+[x] setBackgroundColor
+[ ] setStencil
+[ ] setDrawMode
+[ ] setDrawOffset
+[ ] setClipRect
+[ ] clearClipRect
+[ ] setLineCapStyle
+[ ] setFont
+[ ] setTextTracking
+[ ] pushContext
+[ ] popContext
+#### Drawing
+[ ] drawBitmap
+[ ] tileBitmap
+[ ] drawLine
+[ ] fillTriangle
+[ ] drawRect
+[ ] fillRect
+[ ] drawEllipse
+[ ] drawScaledBitmap
+[x] drawText
+#### Bitmap
+[ ] newBitmap
+[ ] freeBitmap
+[ ] loadBitmap
+[ ] copyBitmap
+[ ] loadIntoBitmap
+[ ] getBitmapData
+[ ] clearBitmap
+[ ] rotatedBitmap
+#### BitmapTable
+[ ] newBitmapTable
+[ ] freeBitmapTable
+[ ] loadBitmapTable
+[ ] loadIntoBitmapTable
+[ ] getBitmapTable
+#### Font
+[ ] loadFont
+[ ] getFontPage
+[ ] getPageGlyph
+[ ] getGlyphKerning
+[ ] getTextWidth
+#### Raw Framebuffer
+[ ] getFrame
+[ ] getDisplayFrame
+[ ] getDebugFrame
+[ ] copyFrameBufferBitmap
+[ ] markUpdatedRows
+[x] display
+
+### Sound
+TODO
+
+### Sprite
+TODO
+
+### System
+TODO
