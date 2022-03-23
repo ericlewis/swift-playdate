@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-  name: "PlaydateAPI",
+  name: "Playdate",
   products: [
     .library(name: "Playdate", targets: ["Playdate"]),
     .plugin(name: "PDC", targets: ["PDC"])

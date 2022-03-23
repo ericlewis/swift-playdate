@@ -7,7 +7,7 @@ public class Playdate {
   public private(set) var graphics: Graphics!
 
   public var eventHandler: ((SystemEvent) -> Void)? = nil
-  public var updateCallback: (() -> Void)? = nil
+  public var updateCallback: (() -> Bool)? = nil
 
   init() {}
 
@@ -18,7 +18,7 @@ public class Playdate {
 
   public class System {
     var pd: PlaydateAPI
-    let pointee: playdate_sys
+    var pointee: playdate_sys
 
     init(_ pd: PlaydateAPI) {
       self.pd = pd
@@ -35,6 +35,11 @@ public class Playdate {
 
     public func error(_ message: String) {
       errorToConsole(withUnsafeMutablePointer(to: &pd) { $0 }, message)
+    }
+
+    public func setUpdateCallback(_ callback: @escaping () -> Bool) {
+      Playdate.shared.updateCallback = callback
+      pointee.setUpdateCallback(_update, nil)
     }
   }
 

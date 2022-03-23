@@ -1,15 +1,18 @@
 import Playdate
 
-@_dynamicReplacement(for: UpdateCallback)
+let pd = Playdate.shared
+
 func updateCallback() -> Bool {
 
-  Playdate.shared.system.drawFPS(x: 0, y: 0)
-  Playdate.shared.graphics.draw(.text("Hello world... Swift edition!", x: 0, y: 20))
+  pd.system.drawFPS(x: 0, y: 0)
+  pd.graphics.draw(.text("Hello world.", x: 0, y: 20))
 
   return true
 }
 
 @_dynamicReplacement(for: EventCallback(event:))
 func eventCallback(event: SystemEvent) {
-  Playdate.shared.system.log("\(event)")
+  if event == .initialize {
+    pd.system.setUpdateCallback(updateCallback)
+  }
 }
