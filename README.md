@@ -1,6 +1,6 @@
 # Swift :heart: Playdate
 
-Use swift to build games for the [Playdate](https://play.date) [simulator](https://sdk.play.date/1.9.3/#using-playdate-simulator).
+Swift package & plugin for building games that run on [Playdate's](https://play.date) [simulator](https://sdk.play.date/1.9.3/#using-playdate-simulator).
 
 ### Some things to know:
 - Requires XCode 13.3+ 
