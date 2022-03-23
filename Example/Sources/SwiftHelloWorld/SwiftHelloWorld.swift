@@ -5,7 +5,7 @@ let pd = Playdate.shared
 func updateCallback() -> Bool {
 
   pd.system.drawFPS(x: 0, y: 0)
-  pd.graphics.draw(.text("Hello world.", x: 0, y: 20))
+  pd.graphics.draw(.text("Hello world. \(pd.system.batteryPercentage)", x: 0, y: 20))
 
   return true
 }
