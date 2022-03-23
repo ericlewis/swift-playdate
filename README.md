@@ -225,9 +225,9 @@ TODO
 |Status|Name|
 |:-:|---|
 |✅|getCurrentTimeMilliseconds|
-|🚧|getSecondsSinceEpoch|
-|🚧|resetElapsedTime|
-|🚧|getElapsedTime|
+|✅|getSecondsSinceEpoch|
+|✅|resetElapsedTime|
+|✅|getElapsedTime|
 |✅|getFlipped|
 |✅|getReduceFlashing|
 |❌|formatString|

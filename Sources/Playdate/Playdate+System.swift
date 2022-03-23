@@ -70,6 +70,30 @@ extension Playdate.System {
 // MARK: Methods
 
 extension Playdate.System {
+  /// Returns the number of seconds (and sets milliseconds if not `nil`) elapsed since midnight (hour 0), January 1, 2000.
+  ///
+  public func getSecondsSinceEpoch(milliseconds: Int?) -> TimeInterval {
+    guard let milliseconds = milliseconds else {
+      return TimeInterval(pointee.getSecondsSinceEpoch(nil))
+    }
+
+    var milli = UInt32(milliseconds)
+    return TimeInterval(pointee.getSecondsSinceEpoch(&milli))
+  }
+
+  /// Resets the high-resolution timer.
+  ///
+  public func resetTimer() {
+    pointee.resetElapsedTime()
+  }
+
+  /// Returns the number of seconds since ``resetTimer()`` was called.
+  /// The value is a floating-point number with microsecond accuracy.
+  ///
+  public func getElapsedTime() -> TimeInterval {
+    TimeInterval(pointee.getElapsedTime())
+  }
+
   /// Allocates heap space if ptr is `nil`, else reallocates the given pointer. If size is zero, frees the given pointer.
   ///
   public func realloc(ptr: UnsafeMutableRawPointer?, size: Int) -> UnsafeMutableRawPointer? {
@@ -82,7 +106,7 @@ extension Playdate.System {
     pointee.drawFPS(CInt(x), CInt(y))
   }
 
-  /// Calls the log function, equivalent to print() in Lua.
+  /// Calls the log function, equivalent to `print()` in Lua.
   ///
   public func log(_ message: String) {
     logToConsole(withUnsafeMutablePointer(to: &pd) { $0 }, message)
@@ -95,6 +119,7 @@ extension Playdate.System {
   }
 
   /// Replaces the default Lua run loop function with a custom update function.
+  /// 
   /// The update function should return a bool indicating to the system a need to update the display.
   ///
   public func setUpdateCallback(_ callback: @escaping () -> Bool) {
