@@ -5,6 +5,7 @@ public class Playdate {
 
   public private(set) var system: System!
   public private(set) var graphics: Graphics!
+  public private(set) var display: Display!
 
   internal var eventHandler: ((SystemEvent) -> Void)? = nil
   internal var updateCallback: (() -> Bool)? = nil
@@ -12,6 +13,7 @@ public class Playdate {
   public func register(_ pd: PlaydateAPI) {
     self.system = .init(pd)
     self.graphics = .init(pd)
+    self.display = .init(pd)
   }
 }
 
