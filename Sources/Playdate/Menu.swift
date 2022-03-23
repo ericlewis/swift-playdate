@@ -65,6 +65,7 @@ extension Menu {
   ///
   /// If this menu item is interacted with while the system menu is open, callback will be called when the menu is closed.
   ///
+  @discardableResult
   public func addCheckmarkItem(_ title: String, isOn: Bool, f: @escaping (Bool) -> Void) throws -> MenuItem {
     let isOnInt: Int32 = isOn ? 1 : 0
     let ptr: OpaquePointer
@@ -98,6 +99,7 @@ extension Menu {
   ///
   /// If this menu item is interacted with while the system menu is open, callback will be called when the menu is closed.
   ///
+  @discardableResult
   public func addOptionItem(_ title: String, options: [String], f: @escaping (String) -> Void) throws -> MenuItem {
     let count = CInt(options.count)
     var cOptions = withArrayOfCStrings(options, { $0 }).map { UnsafePointer($0) }
@@ -124,6 +126,24 @@ extension Menu {
     )
     menuItems.append(menuItem)
     return menuItem
+  }
+
+  /// Adds a new menu item that allows the player to cycle through a set of options.
+  ///
+  /// `title` will be the title displayed by the menu item.
+  ///
+  /// options should be an array of strings representing the states this menu item can cycle through.
+  /// Due to limited horizontal space, the option strings and title should be kept short for this type of menu item.
+  ///
+  /// If this menu item is interacted with while the system menu is open, callback will be called when the menu is closed.
+  ///
+  @discardableResult
+  public func addOptionItem<R: RawRepresentable>(
+    _ title: String,
+    options: [R],
+    f: @escaping (String) -> Void
+  ) throws -> MenuItem where R.RawValue == String {
+    try addOptionItem(title, options: options.map(\.rawValue), f: f)
   }
 
   /// Removes the menu item from the system menu.

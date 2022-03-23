@@ -76,26 +76,30 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 |✅|Clear|
 |✅|setBackgroundColor|
 |🚧|setStencil|
-|🚧|setDrawMode|
-|🚧|setDrawOffset|
-|🚧|setClipRect|
-|🚧|clearClipRect|
-|🚧|setLineCapStyle|
-|🚧|setFont|
-|🚧|setTextTracking|
+|✅|setDrawMode|
+|✅|setDrawOffset|
+|✅|setClipRect|
+|✅|setScreenClipRect|
+|✅|clearClipRect|
+|✅|setLineCapStyle|
+|✅|setFont|
+|✅|setTextTracking|
+|✅|setTextLeading|
 |🚧|pushContext|
-|🚧|popContext|
+|✅|popContext|
 
 #### Drawing
 |Status|Name|
 |:-:|---|
 |🚧|drawBitmap|
 |🚧|tileBitmap|
-|🚧|drawLine|
+|✅|drawLine|
 |🚧|fillTriangle|
-|🚧|drawRect|
-|🚧|fillRect|
+|✅|drawRect|
+|✅|fillRect|
 |🚧|drawEllipse|
+|🚧|fillEllipse|
+|🚧|fillPolygon|
 |🚧|drawScaledBitmap|
 |✅|drawText|
 

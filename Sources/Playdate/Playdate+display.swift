@@ -120,6 +120,8 @@ public enum Axis {
 }
 
 public struct Point {
+  public static let zero = Point(x: 0, y: 0)
+  
   public let x: Float
   public let y: Float
 
