@@ -4,10 +4,11 @@ Swift package & plugin for building games that run on [Playdate's](https://play.
 
 ### Some things to know:
 - Requires XCode 13.3+ 
-- Only been tested on M1 Mac.
+- Only tested on M1 Mac.
 - Useful for exploring what swift development might be like, you cannot build for device (yet).
 - This is highly experimental and likely to change - the swift wrapper is barely started.
 - You will likely need to kill the simulator between runs, it doesn't seem to pick up on changes very well.
+- The plugin isn't very stable / smart, but it can be made to be.
 
 ## Usage
 
