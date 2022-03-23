@@ -31,38 +31,40 @@ func updateCallback() -> Bool {
   return true
 }
 
+func initialize() {
+  do {
+    setupDisplay()
+    try setupFonts()
+    try setupMenu()
+  } catch {
+    System.error(error.localizedDescription)
+  }
+}
+
+func setupDisplay() {
+  Display.isInverted = true
+}
+
+func setupFonts() throws {
+  try Graphics.setFont(AshevilleSans, weight: .bold, size: .pt14)
+}
+
 enum Fonts: String, CaseIterable {
   case bold
   case light
   case italic
 }
 
-func initialize() {
-  do {
-    // set default font.
-    try Graphics.setFont(AshevilleSans, weight: .bold, size: .pt14)
-
-    // set default inversion
-    Display.isInverted = true
-
-    // create our menu items
-    setupMenu()
-    
-  } catch {
-    System.error(error.localizedDescription)
-  }
-}
-
-func setupMenu() {
-  try! Menu.addCheckmarkItem("inverted", isOn: true) { isEnabled in
+func setupMenu() throws {
+  try Menu.addCheckmarkItem("inverted", isOn: true) { isEnabled in
     Display.isInverted = isEnabled
   }
 
-  try! Menu.addCheckmarkItem("crnk snd", isOn: true) { isEnabled in
+  try Menu.addCheckmarkItem("crnk snd", isOn: true) { isEnabled in
     System.isCrankSoundEnabled = isEnabled
   }
 
-  try! Menu.addOptionItem("font", options: Fonts.allCases) { option in
+  try Menu.addOptionItem("font", options: Fonts.allCases) { option in
     switch Fonts(rawValue: option) {
     case .bold:
       try! Graphics.setFont("Asheville-Sans-14-Bold")
