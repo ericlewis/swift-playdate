@@ -1,0 +1,5 @@
+module CPlaydate {
+    header "../../Headers/CPlaydate-Bridging-Header.h"
+    link "pd_api"
+    export *
+}
