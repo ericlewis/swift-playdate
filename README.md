@@ -11,7 +11,7 @@ Swift package & plugin for building games that run on [Playdate's](https://play.
 
 ## Usage
 
-`swift-playdate` can be used via swift-package-manager. It only requires a small bit of project structure.
+`swift-playdate` can be used via [swift-package-manager](https://github.com/apple/swift-package-manager). It only requires a small bit of project structure.
 
 - Must be a package based project with product type of dynamic.
 - Must have a `Sources/Resources` folder with *at least* a valid `pdxinfo` file inside.
