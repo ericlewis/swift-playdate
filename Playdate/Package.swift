@@ -7,6 +7,7 @@ let package = Package(
   name: "PlaydateAPI",
   products: [
     .library(name: "Playdate", targets: ["Playdate"]),
+    .plugin(name: "PDC", targets: ["PDC"])
   ],
   targets: [
     .systemLibrary(
@@ -15,6 +16,16 @@ let package = Package(
     .target(
       name: "Playdate",
       dependencies: ["CPlaydate"]
-    )
+    ),
+    .plugin(
+      name: "PDC",
+      capability: .command(
+        intent: .custom(verb: "pdc", description: "builds a pdex from resources")
+      )
+    ),
+    .plugin(
+      name: "LinkSDK",
+      capability: .buildTool()
+    ),
   ]
 )

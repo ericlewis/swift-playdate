@@ -4,7 +4,7 @@ import Playdate
 func updateCallback() -> Bool {
 
   Playdate.shared.system.drawFPS(x: 0, y: 0)
-  Playdate.shared.graphics.draw(.text("nice", x: 0, y: 20))
+  Playdate.shared.graphics.draw(.text("Hello world... Swift edition!", x: 0, y: 20))
 
   return true
 }
