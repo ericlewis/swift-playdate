@@ -56,22 +56,22 @@ enum Fonts: String, CaseIterable {
 }
 
 func setupMenu() throws {
-  try Menu.addCheckmarkItem("inverted", isOn: true) { isEnabled in
+  Menu.addCheckmarkItem("inverted", isOn: true) { isEnabled in
     Display.isInverted = isEnabled
   }
 
-  try Menu.addCheckmarkItem("crnk snd", isOn: true) { isEnabled in
+  Menu.addCheckmarkItem("crnk snd", isOn: true) { isEnabled in
     System.isCrankSoundEnabled = isEnabled
   }
 
   try Menu.addOptionItem("font", options: Fonts.allCases) { option in
     switch Fonts(rawValue: option) {
     case .bold:
-      try! Graphics.setFont("Asheville-Sans-14-Bold")
+      try Graphics.setFont("Asheville-Sans-14-Bold")
     case .light:
-      try! Graphics.setFont("Asheville-Sans-14-Light")
+      try Graphics.setFont("Asheville-Sans-14-Light")
     case .italic:
-      try! Graphics.setFont("Asheville-Sans-14-Light-Oblique")
+      try Graphics.setFont("Asheville-Sans-14-Light-Oblique")
     case .none:
       break
     }

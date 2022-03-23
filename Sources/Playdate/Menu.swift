@@ -6,9 +6,9 @@ public let Menu = _Menu.shared
 public struct MenuItem {
   fileprivate let id = UUID()
   fileprivate let _ptr: OpaquePointer
-  fileprivate let _func: (() -> Void)?
-  fileprivate let _funcCheckmark: ((Bool) -> Void)?
-  fileprivate let _funcOption: ((String) -> Void)?
+  fileprivate let _func: (() throws -> Void)?
+  fileprivate let _funcCheckmark: ((Bool) throws -> Void)?
+  fileprivate let _funcOption: ((String) throws -> Void)?
   fileprivate var _options: [String] = []
 
   public let title: String
@@ -68,7 +68,7 @@ extension _Menu {
   /// If this menu item is interacted with while the system menu is open, callback will be called when the menu is closed.
   ///
   @discardableResult
-  public func addCheckmarkItem(_ title: String, isOn: Bool, f: @escaping (Bool) -> Void) throws -> MenuItem {
+  public func addCheckmarkItem(_ title: String, isOn: Bool, f: @escaping (Bool) throws -> Void) rethrows -> MenuItem {
     let isOnInt: Int32 = isOn ? 1 : 0
     let ptr: OpaquePointer
     switch menuItems.count {
@@ -102,7 +102,7 @@ extension _Menu {
   /// If this menu item is interacted with while the system menu is open, callback will be called when the menu is closed.
   ///
   @discardableResult
-  public func addOptionItem(_ title: String, options: [String], f: @escaping (String) -> Void) throws -> MenuItem {
+  public func addOptionItem(_ title: String, options: [String], f: @escaping (String) throws -> Void) rethrows -> MenuItem {
     let count = CInt(options.count)
     var cOptions = withArrayOfCStrings(options, { $0 }).map { UnsafePointer($0) }
 
@@ -143,8 +143,8 @@ extension _Menu {
   public func addOptionItem<R: RawRepresentable>(
     _ title: String,
     options: [R],
-    f: @escaping (String) -> Void
-  ) throws -> MenuItem where R.RawValue == String {
+    f: @escaping (String) throws -> Void
+  ) rethrows -> MenuItem where R.RawValue == String {
     try addOptionItem(title, options: options.map(\.rawValue), f: f)
   }
 
@@ -171,12 +171,16 @@ fileprivate func _firstMenuCallback(_ ptr: UnsafeMutableRawPointer?) {
   let item = Menu.menuItems[0]
   let index = Menu.sys.getMenuItemValue(item._ptr)
 
-  if let reg = item._func {
-    reg()
-  } else if let check = item._funcCheckmark {
-    check(index == 1 ? true : false)
-  } else if let option = item._funcOption {
-    option(item._options[Int(index)])
+  do {
+    if let reg = item._func {
+      try reg()
+    } else if let check = item._funcCheckmark {
+      try check(index == 1 ? true : false)
+    } else if let option = item._funcOption {
+      try option(item._options[Int(index)])
+    }
+  } catch {
+    System.error(error.localizedDescription)
   }
 }
 
@@ -184,12 +188,16 @@ fileprivate func _secondMenuCallback(_ ptr: UnsafeMutableRawPointer?) {
   let item = Menu.menuItems[1]
   let index = Menu.sys.getMenuItemValue(item._ptr)
 
-  if let reg = item._func {
-    reg()
-  } else if let check = item._funcCheckmark {
-    check(index == 1 ? true : false)
-  } else if let option = item._funcOption {
-    option(item._options[Int(index)])
+  do {
+    if let reg = item._func {
+      try reg()
+    } else if let check = item._funcCheckmark {
+      try check(index == 1 ? true : false)
+    } else if let option = item._funcOption {
+      try option(item._options[Int(index)])
+    }
+  } catch {
+    System.error(error.localizedDescription)
   }
 }
 
@@ -197,12 +205,16 @@ fileprivate func _thirdMenuCallback(_ ptr: UnsafeMutableRawPointer?) {
   let item = Menu.menuItems[2]
   let index = Menu.sys.getMenuItemValue(item._ptr)
 
-  if let reg = item._func {
-    reg()
-  } else if let check = item._funcCheckmark {
-    check(index == 1 ? true : false)
-  } else if let option = item._funcOption {
-    option(item._options[Int(index)])
+  do {
+    if let reg = item._func {
+      try reg()
+    } else if let check = item._funcCheckmark {
+      try check(index == 1 ? true : false)
+    } else if let option = item._funcOption {
+      try option(item._options[Int(index)])
+    }
+  } catch {
+    System.error(error.localizedDescription)
   }
 }
 
