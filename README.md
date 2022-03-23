@@ -1,6 +1,6 @@
 # Swift & Playdate
 
-Use swift to build games for the Playdate simulator.
+Use swift to build games for the [Playdate](https://play.date) [simulator](https://sdk.play.date/1.9.3/#using-playdate-simulator).
 
 ### Some things to know:
 - Requires XCode 13.3+ 
