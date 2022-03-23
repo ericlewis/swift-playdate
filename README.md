@@ -205,11 +205,11 @@ TODO
 #### Menu
 |Status|Name|
 |:-:|---|
-|🚧|addMenuItem|
-|🚧|addCheckmarkMenuItem|
-|🚧|addOptionsMenuItem|
-|🚧|removeMenuItem|
-|🚧|removeAllMenuItems|
+|✅|addMenuItem|
+|✅|addCheckmarkMenuItem|
+|✅|addOptionsMenuItem|
+|✅|removeMenuItem|
+|✅|removeAllMenuItems|
 |🚧|getMenuItemTitle|
 |🚧|getMenuItemValue|
 |🚧|setMenuItemValue|
