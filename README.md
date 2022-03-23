@@ -55,7 +55,19 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 |🚧|setOffset|
 
 ### File
-TODO
+|Status|Name|
+|:-:|---|
+|🚧|geterr|
+|🚧|stat|
+|🚧|mkdir|
+|🚧|unlink|
+|🚧|rename|
+|🚧|open|
+|🚧|read|
+|🚧|write|
+|🚧|flush|
+|🚧|tell|
+|🚧|seek|
 
 ### Graphics
 |Status|Name|
@@ -126,6 +138,15 @@ TODO
 |🚧|markUpdatedRows|
 |✅|display|
 
+### JSON
+TODO
+
+### Lua
+TODO
+
+### Scoreboards
+TODO
+
 ### Sound
 TODO
 
@@ -139,6 +160,7 @@ TODO
 |✅|error|
 |✅|logToConsole|
 |✅|error|
+
 #### Menu
 |Status|Name|
 |:-:|---|
@@ -153,6 +175,7 @@ TODO
 |🚧|getMenuItemUserData|
 |🚧|setMenuItemUserData|
 |🚧|setMenuImage|
+
 #### Miscellaneous
 |Status|Name|
 |:-:|---|
