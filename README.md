@@ -44,68 +44,121 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 
 ### Display
 ✅ getWidth
+
 ✅ getHeight
+
 ✅ setRefreshRate
+
 ✅ setInverted
+
 ✅ setScale
+
 🚧 setMosaic
+
 🚧 setFlipped
+
 🚧 setOffset
+
 
 ### File
 TODO
 
 ### Graphics
 ✅ Clear
+
 ✅ setBackgroundColor
+
 🚧 setStencil
+
 🚧 setDrawMode
+
 🚧 setDrawOffset
+
 🚧 setClipRect
+
 🚧 clearClipRect
+
 🚧 setLineCapStyle
+
 🚧 setFont
+
 🚧 setTextTracking
+
 🚧 pushContext
+
 🚧 popContext
+
 #### Drawing
 🚧 drawBitmap
+
 🚧 tileBitmap
+
 🚧 drawLine
+
 🚧 fillTriangle
+
 🚧 drawRect
+
 🚧 fillRect
+
 🚧 drawEllipse
+
 🚧 drawScaledBitmap
+
 ✅ drawText
+
 #### Bitmap
 🚧 newBitmap
+
 🚧 freeBitmap
+
 🚧 loadBitmap
+
 🚧 copyBitmap
+
 🚧 loadIntoBitmap
+
 🚧 getBitmapData
+
 🚧 clearBitmap
+
 🚧 rotatedBitmap
+
 #### BitmapTable
 🚧 newBitmapTable
+
 🚧 freeBitmapTable
+
 🚧 loadBitmapTable
+
 🚧 loadIntoBitmapTable
+
 🚧 getBitmapTable
+
 #### Font
 🚧 loadFont
+
 🚧 getFontPage
+
 🚧 getPageGlyph
+
 🚧 getGlyphKerning
+
 🚧 getTextWidth
+
 #### Raw Framebuffer
 🚧 getFrame
+
 🚧 getDisplayFrame
+
 🚧 getDebugFrame
+
 🚧 copyFrameBufferBitmap
+
 🚧 markUpdatedRows
+
 ✅ display
+
 
 ### Sound
 TODO
