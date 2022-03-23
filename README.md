@@ -13,6 +13,7 @@ Use swift to build games for the Playdate simulator.
 
 `swift-playdate` can be used via swift-package-manager. It only requires a small bit of project structure.
 
+- Must be a package based project with product type of dynamic.
 - Must have a `Sources/Resources` folder with *at least* a valid `pdxinfo` file inside.
 	- note: other assets (images, sound, lua files) are to be added here too.
 - Builds are handled via SPM:
