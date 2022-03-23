@@ -142,10 +142,50 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 TODO
 
 ### Lua
-TODO
+|Status|Name|
+|:-:|---|
+|🚧|addFunction|
+|🚧|registerClass|
+|🚧|pushFunction|
+|🚧|indexMetatable|
+|🚧|start|
+|🚧|stop|
+|🚧|getArgCount|
+|🚧|getArgCount|
+|🚧|argIsNil|
+|🚧|getArgBool|
+|🚧|getArgInt|
+|🚧|getArgFloat|
+|🚧|getArgString|
+|🚧|getArgBytes|
+|🚧|getArgObject|
+|🚧|getBitmap|
+|🚧|getSprite|
+|🚧|pushNil|
+|🚧|pushBool|
+|🚧|pushInt|
+|🚧|pushFloat|
+|🚧|pushString|
+|🚧|pushBytes|
+|🚧|pushBitmap|
+|🚧|pushSprite|
+|🚧|pushObject|
+|🚧|retainObject|
+|🚧|releaseObject|
+|🚧|setObjectValue|
+|🚧|getObjectValue|
+|🚧|callFunction|
 
 ### Scoreboards
-TODO
+|Status|Name|
+|:-:|---|
+|🚧|addScore|
+|🚧|getPersonalBest|
+|🚧|freeScore|
+|🚧|getScoreboards|
+|🚧|freeBoardsList|
+|🚧|getScores|
+|🚧|freeScoresList|
 
 ### Sound
 TODO
