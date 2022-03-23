@@ -43,121 +43,88 @@ func eventCallback(event: SystemEvent) {
 Below is a list of all the C apis & wether or not there is some sort of equivalent in `Playdate`.
 
 ### Display
-✅ getWidth
-
-✅ getHeight
-
-✅ setRefreshRate
-
-✅ setInverted
-
-✅ setScale
-
-🚧 setMosaic
-
-🚧 setFlipped
-
-🚧 setOffset
-
+|Status|Name|
+|:-:|---|
+|✅|getWidth|
+|✅|getHeight|
+|✅|setRefreshRate|
+|✅|setInverted|
+|✅|setScale|
+|🚧|setMosaic|
+|🚧|setFlipped|
+|🚧|setOffset|
 
 ### File
 TODO
 
 ### Graphics
-✅ Clear
-
-✅ setBackgroundColor
-
-🚧 setStencil
-
-🚧 setDrawMode
-
-🚧 setDrawOffset
-
-🚧 setClipRect
-
-🚧 clearClipRect
-
-🚧 setLineCapStyle
-
-🚧 setFont
-
-🚧 setTextTracking
-
-🚧 pushContext
-
-🚧 popContext
+|Status|Name|
+|:-:|---|
+|✅|Clear|
+|✅|setBackgroundColor|
+|🚧|setStencil|
+|🚧|setDrawMode|
+|🚧|setDrawOffset|
+|🚧|setClipRect|
+|🚧|clearClipRect|
+|🚧|setLineCapStyle|
+|🚧|setFont|
+|🚧|setTextTracking|
+|🚧|pushContext|
+|🚧|popContext|
 
 #### Drawing
-🚧 drawBitmap
-
-🚧 tileBitmap
-
-🚧 drawLine
-
-🚧 fillTriangle
-
-🚧 drawRect
-
-🚧 fillRect
-
-🚧 drawEllipse
-
-🚧 drawScaledBitmap
-
-✅ drawText
+|Status|Name|
+|:-:|---|
+|🚧|drawBitmap|
+|🚧|tileBitmap|
+|🚧|drawLine|
+|🚧|fillTriangle|
+|🚧|drawRect|
+|🚧|fillRect|
+|🚧|drawEllipse|
+|🚧|drawScaledBitmap|
+|✅|drawText|
 
 #### Bitmap
-🚧 newBitmap
-
-🚧 freeBitmap
-
-🚧 loadBitmap
-
-🚧 copyBitmap
-
-🚧 loadIntoBitmap
-
-🚧 getBitmapData
-
-🚧 clearBitmap
-
-🚧 rotatedBitmap
+|Status|Name|
+|:-:|---|
+|🚧|newBitmap|
+|🚧|freeBitmap|
+|🚧|loadBitmap|
+|🚧|copyBitmap|
+|🚧|loadIntoBitmap|
+|🚧|getBitmapData|
+|🚧|clearBitmap|
+|🚧|rotatedBitmap|
 
 #### BitmapTable
-🚧 newBitmapTable
-
-🚧 freeBitmapTable
-
-🚧 loadBitmapTable
-
-🚧 loadIntoBitmapTable
-
-🚧 getBitmapTable
+|Status|Name|
+|:-:|---|
+|🚧|newBitmapTable|
+|🚧|freeBitmapTable|
+|🚧|loadBitmapTable|
+|🚧|loadIntoBitmapTable|
+|🚧|getBitmapTable|
 
 #### Font
-🚧 loadFont
-
-🚧 getFontPage
-
-🚧 getPageGlyph
-
-🚧 getGlyphKerning
-
-🚧 getTextWidth
+|Status|Name|
+|:-:|---|
+|🚧|loadFont|
+|🚧|getFontPage|
+|🚧|getPageGlyph|
+|🚧|getGlyphKerning|
+|🚧|getTextWidth|
 
 #### Raw Framebuffer
-🚧 getFrame
-
-🚧 getDisplayFrame
-
-🚧 getDebugFrame
-
-🚧 copyFrameBufferBitmap
-
-🚧 markUpdatedRows
-
-✅ display
+|Status|Name|
+|:-:|---|
+|🚧|getFrame|
+|🚧|getDisplayFrame|
+|🚧|getDebugFrame|
+|🚧|copyFrameBufferBitmap|
+|🚧|markUpdatedRows|
+|✅|display|
 
 
 ### Sound
