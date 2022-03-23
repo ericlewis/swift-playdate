@@ -176,3 +176,18 @@ public struct Point {
     self.y = y
   }
 }
+
+public struct Button: OptionSet {
+  public let rawValue: Int
+
+  public init(rawValue: Int) {
+    self.rawValue = rawValue
+  }
+
+  public static let left    = Button(rawValue: 1 << 0)
+  public static let right   = Button(rawValue: 1 << 1)
+  public static let up      = Button(rawValue: 1 << 2)
+  public static let down    = Button(rawValue: 1 << 3)
+  public static let b       = Button(rawValue: 1 << 4)
+  public static let a       = Button(rawValue: 1 << 5)
+}

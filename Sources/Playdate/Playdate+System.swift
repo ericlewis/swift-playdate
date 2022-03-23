@@ -6,6 +6,7 @@ extension Playdate {
     var pd: PlaydateAPI
     var pointee: playdate_sys
     var _isAutoLockEnabled: Bool = true
+    var _isCrankSoundEnabled: Bool = true
 
     init(_ pd: PlaydateAPI) {
       self.pd = pd
@@ -65,6 +66,61 @@ extension Playdate.System {
       pointee.setAutoLockDisabled(newValue ? 0 : 1)
     }
   }
+
+  /// Buttons currently held down
+  /// 
+  public var currentButtonState: Button {
+    var buttons: PDButtons = .init(rawValue: 0);
+    pointee.getButtonState(&buttons, nil, nil)
+    return Button(rawValue: Int(buttons.rawValue))
+  }
+
+  /// Buttons pushed in last update cycle
+  ///
+  public var pushedButtonState: Button {
+    var buttons: PDButtons = .init(rawValue: 0);
+    pointee.getButtonState(nil, &buttons, nil)
+    return Button(rawValue: Int(buttons.rawValue))
+  }
+
+  /// Buttons released in last update cycle
+  ///
+  public var releasedButtonState: Button {
+    var buttons: PDButtons = .init(rawValue: 0);
+    pointee.getButtonState(nil, nil, &buttons)
+    return Button(rawValue: Int(buttons.rawValue))
+  }
+
+  /// Returns the current position of the crank, in the range 0-360.
+  /// Zero is pointing up, and the value increases as the crank moves clockwise, as viewed from the right side of the device.
+  /// 
+  public var crankAngle: Float {
+    pointee.getCrankAngle()
+  }
+
+  /// Returns the angle change of the crank since the last time this property was called.
+  /// Negative values are anti-clockwise.
+  ///
+  public var crankChange: Float {
+    pointee.getCrankChange()
+  }
+
+  /// Returns a Bool indicating whether or not the crank is folded into the unit.
+  ///
+  public var isCrankDocked: Bool {
+    pointee.isCrankDocked() == 1 ? true : false
+  }
+
+  /// Since games can receive notification of the crank docking and undocking, and may
+  /// incorporate this into the game, we’ve provided a function for toggling the default sounds for these events.
+  ///
+  public var isCrankSoundEnabled: Bool {
+    get { _isCrankSoundEnabled }
+    set {
+      _isCrankSoundEnabled = newValue
+      let _ = pointee.setCrankSoundsDisabled(newValue ? 0 : 1)
+    }
+  }
 }
 
 // MARK: Methods
@@ -119,7 +175,7 @@ extension Playdate.System {
   }
 
   /// Replaces the default Lua run loop function with a custom update function.
-  /// 
+  ///
   /// The update function should return a bool indicating to the system a need to update the display.
   ///
   public func setUpdateCallback(_ callback: @escaping () -> Bool) {

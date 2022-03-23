@@ -238,9 +238,9 @@ TODO
 |✅|getLanguage|
 |✅|setPeripheralsEnabled|
 |✅|getAccelerometer|
-|🚧|getButtonState|
-|🚧|getCrankAngle|
-|🚧|getCrankChange|
-|🚧|getCrankDocked|
+|✅|getButtonState|
+|✅|getCrankAngle|
+|✅|getCrankChange|
+|✅|getCrankDocked|
 |✅|setAutoLockDisabled|
-|🚧|setCrankSoundDisabled|
+|✅|setCrankSoundDisabled|
