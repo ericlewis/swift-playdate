@@ -144,7 +144,7 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 |✅|display|
 
 ### JSON
-TODO
+Note: it may not be worth implementing these since we have JSONDecoder.
 
 ### Lua
 |Status|Name|
@@ -182,6 +182,7 @@ TODO
 |🚧|callFunction|
 
 ### Scoreboards
+Note: these are not documented anywhere.
 |Status|Name|
 |:-:|---|
 |🚧|addScore|
@@ -214,11 +215,11 @@ TODO
 |✅|addOptionsMenuItem|
 |✅|removeMenuItem|
 |✅|removeAllMenuItems|
-|🚧|getMenuItemTitle|
-|🚧|getMenuItemValue|
-|🚧|setMenuItemValue|
-|🚧|getMenuItemUserData|
-|🚧|setMenuItemUserData|
+|❌|getMenuItemTitle|
+|❌|getMenuItemValue|
+|❌|setMenuItemValue|
+|❌|getMenuItemUserData|
+|❌|setMenuItemUserData|
 |🚧|setMenuImage|
 
 #### Miscellaneous
