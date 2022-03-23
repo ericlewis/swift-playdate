@@ -121,14 +121,14 @@ extension Playdate.System {
   }
 
   /// Disables accelerometer data output
-  /// 
+  ///
   func stopAccelerometerUpdates() {
     pointee.setPeripheralsEnabled(kNone)
   }
 }
 
-struct AccelerometerData {
-  let x: Float
-  let y: Float
-  let z: Float
+public struct AccelerometerData {
+  public let x: Float
+  public let y: Float
+  public let z: Float
 }
