@@ -1,23 +1,19 @@
 import CPlaydate
 import Foundation
 
-extension Playdate {
-  public class System {
-    var pd: PlaydateAPI
-    var pointee: playdate_sys
-    var _isAutoLockEnabled: Bool = true
-    var _isCrankSoundEnabled: Bool = true
+public let System = _System.shared
 
-    init(_ pd: PlaydateAPI) {
-      self.pd = pd
-      pointee = pd.system.pointee
-    }
-  }
+public class _System {
+  public static let shared = _System()
+  
+  var pointee: playdate_sys = Playdate.shared.system
+  var _isAutoLockEnabled: Bool = true
+  var _isCrankSoundEnabled: Bool = true
 }
 
 // MARK: Getters & Setters
 
-extension Playdate.System {
+extension _System {
   /// Returns the current language of the system.
   ///
   public var language: Language {
@@ -125,7 +121,7 @@ extension Playdate.System {
 
 // MARK: Methods
 
-extension Playdate.System {
+extension _System {
   /// Returns the number of seconds (and sets milliseconds if not `nil`) elapsed since midnight (hour 0), January 1, 2000.
   ///
   public func getSecondsSinceEpoch(milliseconds: Int?) -> TimeInterval {
@@ -165,13 +161,13 @@ extension Playdate.System {
   /// Calls the log function, equivalent to `print()` in Lua.
   ///
   public func log(_ message: String) {
-    logToConsole(withUnsafeMutablePointer(to: &pd) { $0 }, message)
+    logToConsole(withUnsafeMutablePointer(to: &Playdate.shared.pd) { $0 }, message)
   }
 
   /// Calls the log function, outputting an error in red to the console, then pauses execution.
   ///
   public func error(_ message: String) {
-    errorToConsole(withUnsafeMutablePointer(to: &pd) { $0 }, message)
+    errorToConsole(withUnsafeMutablePointer(to: &Playdate.shared.pd) { $0 }, message)
   }
 
   /// Replaces the default Lua run loop function with a custom update function.
@@ -184,7 +180,7 @@ extension Playdate.System {
   }
 }
 
-extension Playdate.System {
+extension _System {
   /// The last-read accelerometer data.
   var accelerometerValue: AccelerometerData {
     var x: Float = -1

@@ -1,17 +1,15 @@
 import CPlaydate
 
-extension Playdate {
-  public class Graphics {
-    let pointee: playdate_graphics
-    var _backgroundColor: Color?
+public let Graphics = _Graphics.shared
 
-    init(_ pd: PlaydateAPI) {
-      pointee = pd.graphics.pointee
-    }
-  }
+public class _Graphics {
+  public static let shared = _Graphics()
+  
+  let pointee: playdate_graphics = Playdate.shared.graphics
+  var _backgroundColor: Color?
 }
 
-extension Playdate.Graphics {
+extension _Graphics {
   /// Background color shown when the display is offset or for clearing dirty areas in the sprite system.
   ///
   public var backgroundColor: Color? {
@@ -126,7 +124,7 @@ extension Playdate.Graphics {
   }
 }
 
-extension Playdate.Graphics {
+extension _Graphics {
   /// Draws a width by height rect at x, y.
   ///
   public func drawRectangle(_ bounds: Rectangle, color: Color) {

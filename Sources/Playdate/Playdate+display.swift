@@ -1,23 +1,22 @@
 import CPlaydate
 
-extension Playdate {
-  public class Display {
-    let pointee: playdate_display
-    let graphicsPointee: playdate_graphics
+public let Display = _Display.shared
 
-    var _inverted: Bool = false
-    var _refreshRate: Float = 20
-    var _scale: Int = 1
-    public private(set) var isFlipped: Axis?
+public class _Display {
+  public static let shared = _Display()
+  
+  let pointee: playdate_display = Playdate.shared.display
+  let graphicsPointee: playdate_graphics = Playdate.shared.graphics
 
-    init(_ pd: PlaydateAPI) {
-      pointee = pd.display.pointee
-      graphicsPointee = pd.graphics.pointee
-    }
-  }
+  var _inverted: Bool = false
+  var _refreshRate: Float = 20
+  var _scale: Int = 1
+  public private(set) var isFlipped: Axis?
+
+  init() {}
 }
 
-extension Playdate.Display {
+extension _Display {
 
   /// Returns the height of the display, taking the current scale into account;
   /// e.g., if the scale is 2, this function returns 120 instead of 240.
@@ -45,7 +44,7 @@ extension Playdate.Display {
         _scale = newValue
         pointee.setScale(UInt32(newValue))
       } else {
-        Playdate.shared.system.log(
+        System.log(
           "Warning! Attempted to set invalid display scale: \(newValue), discarding."
         )
       }
@@ -74,7 +73,7 @@ extension Playdate.Display {
   }
 }
 
-extension Playdate.Display {
+extension _Display {
   /// Manually flushes the current frame buffer out to the display.
   /// This function is automatically called after each pass through the run loop, so there shouldn’t be any need to call it yourself.
   ///

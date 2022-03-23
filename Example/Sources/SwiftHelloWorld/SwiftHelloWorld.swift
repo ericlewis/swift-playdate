@@ -4,53 +4,55 @@ let pd = Playdate.shared
 
 func updateCallback() -> Bool {
 
-  pd.graphics.clear(with: .white)
-  pd.system.drawFPS(x: 0, y: 0)
-  if pd.system.currentButtonState == [.left, .up] {
-    pd.graphics.draw(.text("Hello tworld. \(pd.system.currentTimeInterval)", x: 0, y: 20))
+  Graphics.clear(with: .white)
+  System.drawFPS(x: 0, y: 0)
+
+  if System.currentButtonState == [.left, .up] {
+    Graphics.draw(.text("Pressing up & left! \(System.currentTimeInterval)", x: 0, y: 20))
   } else {
-    pd.graphics.draw(.text("Hello world. \(pd.system.currentTimeInterval)", x: 0, y: 20))
+    Graphics.draw(.text("Hello world! \(System.currentTimeInterval)", x: 0, y: 20))
   }
-  pd.graphics.drawFilledRectangle(.init(x: 40, y: 40, width: 60, height: 30), color: .xor)
-  pd.graphics.drawLine(from: .zero, to: .init(x: 400, y: 240), color: .xor, stroke: 5)
+
+  Graphics.drawFilledRectangle(.init(x: 40, y: 40, width: 60, height: 30), color: .xor)
+  Graphics.drawLine(from: .zero, to: .init(x: 400, y: 240), color: .xor, stroke: 5)
 
   return true
 }
 
 enum Fonts: String, CaseIterable {
-  case first
-  case second
-  case third
+  case bold
+  case light
+  case italic
 }
 
 @_dynamicReplacement(for: EventCallback(event:))
 func eventCallback(event: SystemEvent) {
   if event == .initialize {
-    pd.display.isInverted = true
+    Display.isInverted = true
 
-    try! pd.graphics.setFont(AshevilleSans, weight: .bold, size: .pt14)
+    try! Graphics.setFont(AshevilleSans, weight: .bold, size: .pt14)
 
-    try! Menu.shared.addCheckmarkItem("inverted", isOn: true) { isEnabled in
-      pd.display.isInverted = isEnabled
+    try! Menu.addCheckmarkItem("inverted", isOn: true) { isEnabled in
+      Display.isInverted = isEnabled
     }
 
-    try! Menu.shared.addCheckmarkItem("crank sound", isOn: true) { isEnabled in
-      pd.system.isCrankSoundEnabled = isEnabled
+    try! Menu.addCheckmarkItem("crnk snd", isOn: true) { isEnabled in
+      System.isCrankSoundEnabled = isEnabled
     }
 
-    try! Menu.shared.addOptionItem("font", options: Fonts.allCases) { option in
+    try! Menu.addOptionItem("font", options: Fonts.allCases) { option in
       switch Fonts(rawValue: option) {
-      case .first:
-        try! pd.graphics.setFont("Asheville-Sans-14-Bold")
-      case .second:
-        try! pd.graphics.setFont("Asheville-Sans-14-Light")
-      case .third:
-        try! pd.graphics.setFont("Asheville-Sans-14-Light-Oblique")
+      case .bold:
+        try! Graphics.setFont("Asheville-Sans-14-Bold")
+      case .light:
+        try! Graphics.setFont("Asheville-Sans-14-Light")
+      case .italic:
+        try! Graphics.setFont("Asheville-Sans-14-Light-Oblique")
       case .none:
         break
       }
     }
 
-    pd.system.setUpdateCallback(updateCallback)
+    System.setUpdateCallback(updateCallback)
   }
 }

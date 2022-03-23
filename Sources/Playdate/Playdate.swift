@@ -3,17 +3,19 @@ import CPlaydate
 public class Playdate {
   public static let shared = Playdate()
 
-  public private(set) var system: System!
-  public private(set) var graphics: Graphics!
-  public private(set) var display: Display!
+  var pd: PlaydateAPI!
+  var system: playdate_sys!
+  public private(set) var graphics: playdate_graphics!
+  public private(set) var display: playdate_display!
 
   internal var eventHandler: ((SystemEvent) -> Void)? = nil
   internal var updateCallback: (() -> Bool)? = nil
 
   public func register(_ pd: PlaydateAPI) {
-    self.system = .init(pd)
-    self.graphics = .init(pd)
-    self.display = .init(pd)
+    self.pd = pd
+    self.system = pd.system.pointee
+    self.graphics = pd.graphics.pointee
+    self.display = pd.display.pointee
   }
 }
 

@@ -1,6 +1,8 @@
 import Foundation
 import CPlaydate
 
+public let Menu = _Menu.shared
+
 public struct MenuItem {
   fileprivate let id = UUID()
   fileprivate let _ptr: OpaquePointer
@@ -12,17 +14,17 @@ public struct MenuItem {
   public let title: String
 }
 
-public class Menu {
-  public static let shared = Menu()
+public class _Menu {
+  public static let shared = _Menu()
 
   public private(set) var menuItems: [MenuItem] = []
 
-  fileprivate let sys = Playdate.shared.system.pointee
+  fileprivate let sys = Playdate.shared.system!
 
   init() {}
 }
 
-extension Menu {
+extension _Menu {
 
   /// Adds a new menu item to the System Menu.
   /// `title` will be the title displayed by the menu item.
@@ -166,8 +168,8 @@ extension Menu {
 }
 
 fileprivate func _firstMenuCallback(_ ptr: UnsafeMutableRawPointer?) {
-  let item = Menu.shared.menuItems[0]
-  let index = Menu.shared.sys.getMenuItemValue(item._ptr)
+  let item = Menu.menuItems[0]
+  let index = Menu.sys.getMenuItemValue(item._ptr)
 
   if let reg = item._func {
     reg()
@@ -179,8 +181,8 @@ fileprivate func _firstMenuCallback(_ ptr: UnsafeMutableRawPointer?) {
 }
 
 fileprivate func _secondMenuCallback(_ ptr: UnsafeMutableRawPointer?) {
-  let item = Menu.shared.menuItems[1]
-  let index = Menu.shared.sys.getMenuItemValue(item._ptr)
+  let item = Menu.menuItems[1]
+  let index = Menu.sys.getMenuItemValue(item._ptr)
 
   if let reg = item._func {
     reg()
@@ -192,8 +194,8 @@ fileprivate func _secondMenuCallback(_ ptr: UnsafeMutableRawPointer?) {
 }
 
 fileprivate func _thirdMenuCallback(_ ptr: UnsafeMutableRawPointer?) {
-  let item = Menu.shared.menuItems[2]
-  let index = Menu.shared.sys.getMenuItemValue(item._ptr)
+  let item = Menu.menuItems[2]
+  let index = Menu.sys.getMenuItemValue(item._ptr)
 
   if let reg = item._func {
     reg()
