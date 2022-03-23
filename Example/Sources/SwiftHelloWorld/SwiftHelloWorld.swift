@@ -11,8 +11,22 @@ func updateCallback() -> Bool {
     Graphics.draw(.text("Time elapsed: \(System.currentTimeInterval)", x: 0, y: 20))
   }
 
-  Graphics.drawFilledRectangle(.init(x: 40, y: 40, width: 60, height: 30), color: .xor)
-  Graphics.drawLine(from: .zero, to: .init(x: 400, y: 240), color: .xor, stroke: 5)
+  Graphics.drawFilledRectangle(
+    Rectangle(
+      x: 40,
+      y: 40,
+      width: 60,
+      height: 30
+    ),
+    color: .xor
+  )
+
+  Graphics.drawLine(
+    from: .zero,
+    to: .init(x: 400, y: 240),
+    color: .xor,
+    stroke: 5
+  )
 
   return true
 }
@@ -25,9 +39,15 @@ enum Fonts: String, CaseIterable {
 
 func initialize() {
   do {
+    // set default font.
     try Graphics.setFont(AshevilleSans, weight: .bold, size: .pt14)
+
+    // set default inversion
     Display.isInverted = true
+
+    // create our menu items
     setupMenu()
+    
   } catch {
     System.error(error.localizedDescription)
   }
