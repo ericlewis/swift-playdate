@@ -152,3 +152,27 @@ public struct _AshevilleSans: Font {
 }
 
 public let AshevilleSans = _AshevilleSans()
+
+public struct AccelerometerData {
+  public let x: Float
+  public let y: Float
+  public let z: Float
+}
+
+public enum Axis {
+  case horizontal
+  case vertical
+  case both
+}
+
+public struct Point {
+  public static let zero = Point(x: 0, y: 0)
+
+  public let x: Float
+  public let y: Float
+
+  public init(x: Float, y: Float) {
+    self.x = x
+    self.y = y
+  }
+}

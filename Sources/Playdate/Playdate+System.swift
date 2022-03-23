@@ -126,9 +126,3 @@ extension Playdate.System {
     pointee.setPeripheralsEnabled(kNone)
   }
 }
-
-public struct AccelerometerData {
-  public let x: Float
-  public let y: Float
-  public let z: Float
-}
