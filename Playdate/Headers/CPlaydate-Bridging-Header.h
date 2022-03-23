@@ -1,5 +1,5 @@
 #define TARGET_EXTENSION 1
-#include "C_API/pd_api.h"
+#include "panic/pd_api.h"
 
 void logToConsole(PlaydateAPI *pd, const char* fmt) {
   pd->system->logToConsole(fmt);
