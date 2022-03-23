@@ -236,8 +236,8 @@ TODO
 |✅|getBatteryPercentage|
 |✅|getBatteryVoltage|
 |✅|getLanguage|
-|🚧|setPeripheralsEnabled|
-|🚧|getAccelerometer|
+|✅|setPeripheralsEnabled|
+|✅|getAccelerometer|
 |🚧|getButtonState|
 |🚧|getCrankAngle|
 |🚧|getCrankChange|

@@ -102,3 +102,33 @@ extension Playdate.System {
     pointee.setUpdateCallback(_update, nil)
   }
 }
+
+extension Playdate.System {
+  /// The last-read accelerometer data.
+  var accelerometerValue: AccelerometerData {
+    var x: Float = -1
+    var y: Float = -1
+    var z: Float = -1
+    pointee.getAccelerometer(&x, &y, &z)
+    return .init(x: x, y: y, z: z)
+  }
+
+  /// By default, the accelerometer is disabled to save (a small amount of) power.
+  /// Accelerometer data is not available until the next update cycle after it’s enabled.
+  ///
+  func startAccelerometerUpdates() {
+    pointee.setPeripheralsEnabled(kAccelerometer)
+  }
+
+  /// Disables accelerometer data output
+  /// 
+  func stopAccelerometerUpdates() {
+    pointee.setPeripheralsEnabled(kNone)
+  }
+}
+
+struct AccelerometerData {
+  let x: Float
+  let y: Float
+  let z: Float
+}
