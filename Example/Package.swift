@@ -12,13 +12,13 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(name: "Playdate", path: "../Playdate")
+    .package(name: "swift-playdate", path: "../")
   ],
   targets: [
     .target(
       name: "SwiftHelloWorld",
       dependencies: [
-        .product(name: "Playdate", package: "Playdate")
+        .product(name: "Playdate", package: "swift-playdate")
       ]
     )
   ]
