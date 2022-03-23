@@ -15,12 +15,13 @@ func updateCallback() -> Bool {
 func eventCallback(event: SystemEvent) {
   if event == .initialize {
     pd.system.setUpdateCallback(updateCallback)
-    let _ = try! Menu.shared.addCheckmarkItem("testing2", isOn: true) { isEnabled in
-      pd.system.log(isEnabled ? "on" : "off")
+    pd.display.isInverted = true
+    let _ = try! Menu.shared.addCheckmarkItem("Inverted", isOn: true) { isEnabled in
+      pd.display.isInverted = isEnabled
     }
 
-    let _ = try! Menu.shared.addOptionItem("boo", options: ["test1", "test2", "test3"]) {
-      pd.system.log($0)
+    let _ = try! Menu.shared.addOptionItem("boo", options: ["test1", "test2", "test3", "test4"]) { _ in
+
     }
   }
 }

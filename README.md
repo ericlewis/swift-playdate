@@ -51,9 +51,9 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 |✅|setRefreshRate|
 |✅|setInverted|
 |✅|setScale|
-|🚧|setMosaic|
-|🚧|setFlipped|
-|🚧|setOffset|
+|✅|setMosaic|
+|✅|setFlipped|
+|✅|setOffset|
 
 ### File
 |Status|Name|

@@ -8,6 +8,7 @@ extension Playdate {
     var _inverted: Bool = false
     var _refreshRate: Float = 20
     var _scale: Int = 1
+    public private(set) var isFlipped: Axis?
 
     init(_ pd: PlaydateAPI) {
       pointee = pd.display.pointee
@@ -79,5 +80,51 @@ extension Playdate.Display {
   ///
   func flush() {
     graphicsPointee.display()
+  }
+
+  /// Flips the display horizontally, vertically, both, or default position.
+  /// 
+  public func setFlipped(_ axes: Axis?) {
+    isFlipped = axes
+    switch axes {
+    case .horizontal:
+      pointee.setFlipped(1, 0)
+    case .vertical:
+      pointee.setFlipped(0, 1)
+    case .both:
+      pointee.setFlipped(1, 1)
+    case .none:
+      pointee.setFlipped(0, 0)
+    }
+  }
+
+  /// Offsets the display by the given amount.
+  /// Areas outside of the displayed area are filled with the current background color.
+  ///
+  public func setOffset(_ point: Point) {
+    pointee.setOffset(Int32(point.x), Int32(point.y))
+  }
+
+  /// Adds a mosaic effect to the display.
+  /// Valid x and y values are between 0 and 3, inclusive.
+  /// 
+  public func setMosaic(x: Int, y: Int) {
+    pointee.setMosaic(UInt32(x), UInt32(y))
+  }
+}
+
+public enum Axis {
+  case horizontal
+  case vertical
+  case both
+}
+
+public struct Point {
+  public let x: Float
+  public let y: Float
+
+  public init(x: Float, y: Float) {
+    self.x = x
+    self.y = y
   }
 }
