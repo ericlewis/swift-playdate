@@ -48,6 +48,8 @@ public enum DrawCommand {
 }
 
 public struct Rectangle {
+  public static let empty = Rectangle(x: 0, y: 0, width: 0, height: 0)
+  
   public let x: Int
   public let y: Int
   public let width: Int
@@ -63,6 +65,17 @@ public struct Rectangle {
     self.y = y
     self.width = width
     self.height = height
+  }
+
+  init(_ pdRect: PDRect) {
+    self.x = Int(pdRect.x)
+    self.y = Int(pdRect.y)
+    self.width = Int(pdRect.width)
+    self.height = Int(pdRect.height)
+  }
+
+  var pdRect: PDRect {
+    .init(x: .init(x), y: .init(y), width: .init(width), height: .init(height))
   }
 }
 

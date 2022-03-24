@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
   name: "swift-playdate",
+  platforms: [.custom("Playdate", versionString: "1.0")],
   products: [
     .library(name: "Playdate", targets: ["Playdate"]),
     .plugin(name: "PDC", targets: ["PDC"])

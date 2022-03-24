@@ -7,6 +7,7 @@ class Playdate {
   var system: playdate_sys!
   var graphics: playdate_graphics!
   var display: playdate_display!
+  var sprites: playdate_sprite!
 
   var updateCallback: (() -> Bool)? = nil
 
@@ -15,6 +16,7 @@ class Playdate {
     self.system = pd.system.pointee
     self.graphics = pd.graphics.pointee
     self.display = pd.display.pointee
+    self.sprites = pd.sprite.pointee
   }
 }
 

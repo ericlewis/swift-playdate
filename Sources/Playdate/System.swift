@@ -66,7 +66,7 @@ extension _System {
   /// Buttons currently held down
   /// 
   public var currentButtonState: Button {
-    var buttons: PDButtons = .init(rawValue: 0);
+    var buttons: PDButtons = .init(rawValue: .max);
     pointee.getButtonState(&buttons, nil, nil)
     return Button(rawValue: Int(buttons.rawValue))
   }
