@@ -131,7 +131,7 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 #### Drawing
 |Status|Name|
 |:-:|---|
-|🚧|drawBitmap|
+|✅|drawBitmap|
 |🚧|tileBitmap|
 |✅|drawLine|
 |🚧|fillTriangle|
@@ -140,7 +140,7 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 |🚧|drawEllipse|
 |🚧|fillEllipse|
 |🚧|fillPolygon|
-|🚧|drawScaledBitmap|
+|✅|drawScaledBitmap|
 |✅|drawText|
 
 #### Bitmap
@@ -149,9 +149,9 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 |✅|newBitmap|
 |✅|freeBitmap|
 |✅|loadBitmap|
-|🚧|copyBitmap|
+|✅|copyBitmap|
 |🚧|loadIntoBitmap|
-|🚧|getBitmapData|
+|✅|getBitmapData|
 |✅|clearBitmap|
 |🚧|rotatedBitmap|
 

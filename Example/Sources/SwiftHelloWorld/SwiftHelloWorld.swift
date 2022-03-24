@@ -32,7 +32,8 @@ func initialize() {
 
 func setupPlayer() {
   player.setImage(image)
-  player.move(to: .init(x: 100, y: 100))
+  let size = image.size
+  player.move(to: .init(x: size.width, y: size.height))
   player.addToDisplayList()
 }
 

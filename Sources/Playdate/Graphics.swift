@@ -161,4 +161,19 @@ extension _Graphics {
       .init(color.cValue)
     )
   }
+
+  /// Draws the bitmap with its upper-left corner at location x, y, using the given flip orientation.
+  ///
+  public func drawBitmap(_ bitmap: Bitmap, at location: Point) {
+    // TODO: expose flip
+    pointee.drawBitmap(bitmap.ptr, .init(location.x), .init(location.y), kBitmapUnflipped)
+  }
+
+  /// Draws the bitmap scaled to xscale and yscale with its upper-left corner at location x, y.
+  /// Note that flip is not available when drawing scaled bitmaps but negative scale values will achieve the same effect.
+  ///
+  public func drawScaledBitmap(_ bitmap: Bitmap, at location: Point, scale: Point = .init(x: 1, y: 1)) {
+    // TODO: expose flip
+    pointee.drawScaledBitmap(bitmap.ptr, .init(location.x), .init(location.y), .init(scale.x), .init(scale.y))
+  }
 }

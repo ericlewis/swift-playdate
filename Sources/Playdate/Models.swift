@@ -204,3 +204,13 @@ public struct Button: OptionSet {
   public static let b       = Button(rawValue: 1 << 4)
   public static let a       = Button(rawValue: 1 << 5)
 }
+
+public struct Size {
+  public let width: Float
+  public let height: Float
+
+  public init(width: Float, height: Float) {
+    self.width = width
+    self.height = height
+  }
+}
