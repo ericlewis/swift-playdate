@@ -31,13 +31,13 @@ import Playdate
 
 func updateCallback() -> Bool {
   Graphics.clear(with: .white)
-  processInput()
+  processInputs()
   DisplayList.updateAndDrawSprites()
 
   return true
 }
 
-func processInput() {
+func processInputs() {
   let state = System.currentButtonState
   player.move(
     by: .init(
@@ -59,7 +59,7 @@ func initialize() {
 
 func setupPlayer() {
   player.setImage(image)
-  player.move(to: .init(x: 100, y: 100))
+  player.move(to: .init(x: image.size.width, y: image.size.height))
   player.addToDisplayList()
 }
 
@@ -78,6 +78,7 @@ func eventCallback(event: SystemEvent) {
     System.setUpdateCallback(updateCallback)
   }
 }
+
 ```
 
 ## Supported APIs
