@@ -146,13 +146,13 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 #### Bitmap
 |Status|Name|
 |:-:|---|
-|🚧|newBitmap|
+|✅|newBitmap|
 |✅|freeBitmap|
 |✅|loadBitmap|
 |🚧|copyBitmap|
 |🚧|loadIntoBitmap|
 |🚧|getBitmapData|
-|🚧|clearBitmap|
+|✅|clearBitmap|
 |🚧|rotatedBitmap|
 
 #### BitmapTable

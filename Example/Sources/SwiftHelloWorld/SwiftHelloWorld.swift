@@ -4,13 +4,13 @@ import Playdate
 
 func updateCallback() -> Bool {
   Graphics.clear(with: .white)
-  processInput()
+  processInputs()
   DisplayList.updateAndDrawSprites()
   
   return true
 }
 
-func processInput() {
+func processInputs() {
   let state = System.currentButtonState
   player.move(
     by: .init(
