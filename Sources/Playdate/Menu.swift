@@ -1,4 +1,4 @@
-import Foundation
+import Foundation.NSUUID // TODO: remove this dep
 import CPlaydate
 
 public let Menu = _Menu.shared
