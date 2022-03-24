@@ -147,8 +147,8 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 |Status|Name|
 |:-:|---|
 |🚧|newBitmap|
-|🚧|freeBitmap|
-|🚧|loadBitmap|
+|✅|freeBitmap|
+|✅|loadBitmap|
 |🚧|copyBitmap|
 |🚧|loadIntoBitmap|
 |🚧|getBitmapData|
@@ -237,7 +237,15 @@ Note: these are not documented anywhere.
 TODO
 
 ### Sprite
-TODO
+|Status|Name|
+|:-:|---|
+|✅|newSprite|
+|✅|moveTo|
+|✅|moveBy|
+|✅|getPosition|
+|✅|addSprite|
+|✅|setImage|
+TODO: more cases
 
 ### System
 |Status|Name|
