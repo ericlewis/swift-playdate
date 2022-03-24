@@ -245,7 +245,7 @@ TODO
 |✅|getPosition|
 |✅|addSprite|
 |✅|setImage|
-TODO: more cases
+|✅|freeSprite|
 
 ### System
 |Status|Name|
