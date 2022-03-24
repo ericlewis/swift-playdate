@@ -117,10 +117,26 @@ extension _Graphics {
     )
   }
 
+  /// Push a new drawing context for drawing into the given bitmap.
+  /// If target is `nil`, the drawing functions will use the display framebuffer.
+  ///
+  public func pushContext(_ bitmap: Bitmap? = nil) {
+    pointee.pushContext(bitmap?.ptr)
+  }
+
   /// Pops a context off the stack (if any are left), restoring the drawing settings from before the context was pushed.
   ///
   public func popContext() {
     pointee.popContext()
+  }
+
+  /// Sets the stencil used for drawing.
+  ///
+  /// If the image is smaller than full screen, its width should be a multiple of 32 pixels.
+  /// Stencils smaller than full screen will be tiled.
+  ///
+  public func setStencil(_ bitmap: Bitmap?) {
+    pointee.setStencil(bitmap?.ptr)
   }
 }
 
@@ -175,5 +191,12 @@ extension _Graphics {
   public func drawScaledBitmap(_ bitmap: Bitmap, at location: Point, scale: Point = .init(x: 1, y: 1)) {
     // TODO: expose flip
     pointee.drawScaledBitmap(bitmap.ptr, .init(location.x), .init(location.y), .init(scale.x), .init(scale.y))
+  }
+
+  /// Draws the bitmap with its upper-left corner at location x, y tiled inside a width by height rectangle.
+  ///
+  public func tileBitmap(_ bitmap: Bitmap, bounds frame: Rectangle) {
+    // TODO: expose flip
+    pointee.tileBitmap(bitmap.ptr, .init(frame.x), .init(frame.y), .init(frame.width), .init(frame.height), kBitmapUnflipped)
   }
 }

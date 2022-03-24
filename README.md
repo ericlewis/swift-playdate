@@ -115,7 +115,7 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 |:-:|---|
 |✅|Clear|
 |✅|setBackgroundColor|
-|🚧|setStencil|
+|✅|setStencil|
 |✅|setDrawMode|
 |✅|setDrawOffset|
 |✅|setClipRect|
@@ -125,14 +125,14 @@ Below is a list of all the C apis & wether or not there is some sort of equivale
 |✅|setFont|
 |✅|setTextTracking|
 |✅|setTextLeading|
-|🚧|pushContext|
+|✅|pushContext|
 |✅|popContext|
 
 #### Drawing
 |Status|Name|
 |:-:|---|
 |✅|drawBitmap|
-|🚧|tileBitmap|
+|✅|tileBitmap|
 |✅|drawLine|
 |🚧|fillTriangle|
 |✅|drawRect|
