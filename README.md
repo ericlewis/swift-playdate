@@ -21,21 +21,61 @@ Swift package & plugin for building games that run on [Playdate's](https://play.
 	- `swift package --disable-sandbox pdc`: creates a pdx file located at `.build/plugins/pdc/outputs/artifacts/{PACKAGE_DISPLAY_NAME}.pdx`
 	- `swift package --disable-sandbox pdc --run`: creates a pdx file & opens it in the simulator
   - `--disable-sandbox` is required because we are using plugins outside their typical reach.
-- Ideally swizzle the `EventCallback` in order to install an update handler. Here is an example:
+- Ideally swizzle the `EventCallback` in order to install an update handler.
+
+## Example
 ```swift
 import Playdate
 
-func update() -> Bool {
-  Playdate.shared.system.drawFPS(x: 0, y: 0)
+// MARK: Game Loop
+
+func updateCallback() -> Bool {
+  Graphics.clear(with: .white)
+  processInput()
+  DisplayList.updateAndDrawSprites()
+
   return true
 }
 
-// swizzle the default event callback provided by swift-playdate
+func processInput() {
+  let state = System.currentButtonState
+  player.move(
+    by: .init(
+      x: state.contains(.left) ? -10 : state.contains(.right) ? 10 : 0,
+      y: state.contains(.up) ? -10 : state.contains(.down) ? 10 : 0
+    )
+  )
+}
+
+// MARK: Setup
+
+let image = Bitmap("images/player")
+let player = Sprite()
+
+func initialize() {
+  setupPlayer()
+  setupMenu()
+}
+
+func setupPlayer() {
+  player.setImage(image)
+  player.move(to: .init(x: 100, y: 100))
+  player.addToDisplayList()
+}
+
+func setupMenu() {
+  Menu.addCheckmarkItem("inverted", isOn: false) { isEnabled in
+    Display.isInverted = isEnabled
+  }
+}
+
+// MARK: Event Handler
+
 @_dynamicReplacement(for: EventCallback(event:))
 func eventCallback(event: SystemEvent) {
   if event == .initialize {
-    // set our callback after initialization & before lua initialization
-    Playdate.shared.system.setUpdateCallback(update)
+    initialize()
+    System.setUpdateCallback(updateCallback)
   }
 }
 ```
