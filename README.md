@@ -268,7 +268,7 @@ TODO
 |❌|setMenuItemValue|
 |❌|getMenuItemUserData|
 |❌|setMenuItemUserData|
-|🚧|setMenuImage|
+|✅|setMenuImage|
 
 #### Miscellaneous
 |Status|Name|

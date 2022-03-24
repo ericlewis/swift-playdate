@@ -165,6 +165,20 @@ extension _Menu {
     sys.removeAllMenuItems()
     menuItems.removeAll()
   }
+
+  /// A game can optionally provide an image to be displayed alongside the system menu. Bitmap must be a 400x240 ``Bitmap``.
+  /// All important content should be in the left half of the image in an area 200 pixels wide, as the menu will obscure the rest.
+  /// The right side of the image will be visible briefly as the menu animates in and out.
+  ///
+  /// Optionally, a non-zero offset ``Point``, can be provided. Only the `x` coordinate is respected.
+  /// This must be a number between 0 and 200 and will cause the menu image to
+  /// animate to a position offset left by x pixels as the menu is animated in.
+  ///
+  /// This function could be called in response to the ``SystemEvent/pause`` event in your implementation of `EventCallback`.
+  ///
+  public func setImage(_ bitmap: Bitmap, offset: Point = .zero) {
+    System.pointee.setMenuImage(bitmap.ptr, .init(offset.x))
+  }
 }
 
 fileprivate func _firstMenuCallback(_ ptr: UnsafeMutableRawPointer?) {
