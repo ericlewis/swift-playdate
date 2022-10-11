@@ -7,7 +7,7 @@ let package = Package(
   name: "swift-playdate",
   platforms: [.custom("Playdate", versionString: "1.0")],
   products: [
-    .library(name: "Playdate", targets: ["Playdate"]),
+    .library(name: "Playdate", type: .dynamic, targets: ["Playdate"]),
     .plugin(name: "PDC", targets: ["PDC"])
   ],
   targets: [
@@ -23,10 +23,6 @@ let package = Package(
       capability: .command(
         intent: .custom(verb: "pdc", description: "builds a pdex from resources")
       )
-    ),
-    .plugin(
-      name: "LinkSDK",
-      capability: .buildTool()
     ),
   ]
 )
